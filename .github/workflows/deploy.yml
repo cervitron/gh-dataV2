@@ -7,7 +7,7 @@ on:
 env:
   MONGODB_DB_MAIN: gha-demo
   MONGODB_PASSWORD: ${{secrets.USERPASS}}
-  MONGODB_USERNAME: ${{variables.USER}}
+  MONGODB_USERNAME: ${{Variables.USER}}
   MONGODB_CLUSTER_ADDRESS: Cluster_Cervi
   PORT: 8080
 jobs:
