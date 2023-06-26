@@ -32,10 +32,10 @@ jobs:
   deploy:
     environment: deploy
     env:
-     MONGODB_USERNAME: testing
+     MONGODB_USERNAME: ${{secrets.USER}}
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "MONGODB_USERNAME vale :${{secrets.MONGODB_USERNAME}} "
+          echo "MONGODB_USERNAME vale :${{env.MONGODB_USERNAME}} "
