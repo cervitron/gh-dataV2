@@ -7,7 +7,7 @@ on:
 env:
   MONGODB_DB_MAIN: gha-demo
   MONGODB_PASSWORD: ${{secrets.USERPASS}}
-  MONGODB_USERNAME: yo_mismo
+  MONGODB_USERNAME: ${{secrets.USER}}
   MONGODB_CLUSTER_ADDRESS: Cluster_Cervi
   PORT: 8080
 jobs:
@@ -38,3 +38,4 @@ jobs:
         run: |        
           echo "MONGODB_DB_MAIN vale :${{env.MONGODB_DB_MAIN}} "
           echo "MONGODB_PASSWORD vale :${{env.MONGODB_PASSWORD}} "
+          echo "MONGODB_USERNAME vale :${{env.MONGODB_USERNAME}} "
