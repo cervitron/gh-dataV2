@@ -4,15 +4,13 @@ on:
     branches:
       - main
       - dev
-env:
-  MONGODB_DB_MAIN: gha-demo
-  MONGODB_PASSWORD: ${{secrets.USERPASS}}
-  MONGODB_USERNAME: ${{secrets.USER}}
-  MONGODB_CLUSTER_ADDRESS: Cluster_Cervi
-  PORT: 8080
+
 jobs:
   test:
     environment: testing
+    env:
+      MONGODB_USERNAME: ${{secrets.USER}}
+      PORT: 8080
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -29,13 +27,15 @@ jobs:
 #      - name: Run tests
 #        run: npm test
       - name: Output information
-        run: echo "..."
+        run: |
+          echo "MONGODB_USERNAME vale: ${{env.MONGODB_USERNAME}}"
   deploy:
+    environment: deploy
+    env:
+     MONGODB_USERNAME: testing
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "MONGODB_DB_MAIN vale :${{env.MONGODB_DB_MAIN}} "
-          echo "MONGODB_PASSWORD vale :${{env.MONGODB_PASSWORD}} "
           echo "MONGODB_USERNAME vale :${{env.MONGODB_USERNAME}} "
